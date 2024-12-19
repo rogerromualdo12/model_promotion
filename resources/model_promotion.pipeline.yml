@@ -1,0 +1,13 @@
+# The main pipeline for model_promotion
+resources:
+  pipelines:
+    model_promotion_pipeline:
+      name: model_promotion_pipeline
+      catalog: test_workspace
+      target: model_promotion_${bundle.environment}
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
